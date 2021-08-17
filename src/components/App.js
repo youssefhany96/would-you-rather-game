@@ -34,10 +34,10 @@ class App extends Component {
                       <Redirect to='Home' />  
                     </Route>
                     <Route path='/Home' component={Dashboard} />
-                    <Route path='/question/:id' component={QuestionPage} />
+                    <Route path='/questions/:question_id' component={QuestionPage} />
                     <Route path='/leaderboard' component={Leaderboard} />
-                    <Route path='/new' component={NewQuestion} />  
-                    <Route component={NotFound} />  
+                    <Route path='/add' component={NewQuestion} />  
+                    <Route path='/not-found' component={NotFound} />  
                   </Switch>  
               )}
               </div>

@@ -214,4 +214,21 @@ label {
   text-align: center;
 }
 
+.sucess{
+  background-color: rgb(153, 202, 153);
+  width: 50%;
+  margin: auto;
+  border: 3px solid #dad7d7;
+  margin-top: 1%;
+  
+}
+.unsucess{
+  background-color: rgb(231, 83, 83);
+  width: 50%;
+  margin: auto;
+  border: 3px solid #dad7d7;
+  margin-top: 1%; 
+
+}
+
 

@@ -55,7 +55,7 @@ class NewQuestion extends Component {
     return (
       <div className='center'>
         <div>
-          <p>Create New Question</p>
+          <h2>Would You Rather..</h2>
         </div>
         <div>
           <form onSubmit={this.handleSubmit}>

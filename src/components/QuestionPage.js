@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { handleAnswerQuestion } from '../actions/questions'
+import { Redirect } from 'react-router-dom'
 
 class QuestionPage extends Component {
   state = {
@@ -20,6 +21,9 @@ class QuestionPage extends Component {
   }; 
   render() {
     const { id, users, questions, authedUser} = this.props
+    if(!questions[id]) {
+      return <Redirect to="/not-found"/>
+    }
     let optionOneVotes = questions[id].optionOne.votes.length
     let optionTwoVotes = questions[id].optionTwo.votes.length
     let totalVotes = questions[id].optionOne.votes.length + questions[id].optionTwo.votes.length
@@ -32,13 +36,13 @@ class QuestionPage extends Component {
               <h2>Asked by {users[questions[id].author].name}</h2>
               <h3>The Results</h3>
             </div>   
-            <div>
+            <div className={ users[authedUser].answers[id]==="optionOne"? "sucess":"unsucess"}>
               <p>Would you rather {questions[id].optionOne.text}?</p>
               <p>{optionOneVotes} out of {totalVotes}</p>
               <p>{this.calculateVotes(optionOneVotes, totalVotes)}%</p>
             </div>
 
-            <div>
+            <div className={users[authedUser].answers[id]==="optionTwo"? "sucess":"unsucess"}>
               <p>Would you rather {questions[id].optionTwo.text}?</p>
               <p>{optionTwoVotes} out of {totalVotes}</p>
               <p>{this.calculateVotes(optionTwoVotes, totalVotes)}%</p>
@@ -65,7 +69,7 @@ class QuestionPage extends Component {
 }
 
 function mapStateToProps ({ users, questions, authedUser}, { match }) {
-  const id = match.params.id
+  const id = match.params.question_id
   return {
     id,
     authedUser,

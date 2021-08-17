@@ -17,7 +17,7 @@ class Question extends Component {
         <div className="question-info">
           <h3> Would You Rather? </h3>
           <span>{question.optionOne.text}  or...</span>
-          <Link to={`/question/${question.id}`}> View poll</Link>
+          <Link to={`/questions/${question.id}`}> View poll</Link>
         </div>
   
       </div>
